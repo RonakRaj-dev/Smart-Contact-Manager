@@ -1,0 +1,86 @@
+  <!DOCTYPE html>
+  <html lang="en" th:fragment="parent(content, title, script)" xmlns:th="http://www.thymeleaf.org">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title th:text="${title}">SCM</title>
+      <link rel="icon" th:href="@{/static/favicon.ico}" type="image/x-icon" />
+      <!-- Flowbite CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+      <!-- Custom CSS -->
+      <link rel="stylesheet" th:href="@{/css/output.css}" />
+      <link rel="stylesheet" th:href="@{/css/style.css}" />
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+
+    <body class="bg-white dark:bg-gray-900 dark:text-white transition-colors duration-300">
+      <!-- Header -->
+      <div th:if="${loggedInUser}">
+        <div th:replace="~{user/user_navbar::user-navbar}"></div>
+      </div>
+      <div th:unless="${loggedInUser}">
+        <div th:replace="~{navbar :: navbar}"></div>
+      </div>
+
+      <!-- Theme Toggle Button
+      <button id="theme_change_button" class="p-2 bg-gray-300 dark:bg-gray-700 rounded-full fixed top-5 right-5 z-50">
+        <span class="text-sm text-gray-900 dark:text-gray-100">dark</span>
+      </button> -->
+
+      <!-- Main Content -->
+      <main class="p-4 min-h-screen">
+        <section th:replace="${content}"></section>
+      </main>
+
+      <!-- Footer (optional) -->
+      <!-- <footer class="p-4 text-center text-gray-500">© 2025 Smart Contact Manager</footer> -->
+
+      <!-- Scripts -->
+      <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script th:src="@{/js/script.js}"></script>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          // Ensure the theme is applied when the page is loaded
+          let currentTheme = localStorage.getItem('theme') || 'light';
+          changePageTheme(currentTheme, ''); // Apply theme immediately
+
+          const changeThemeButton = document.querySelector("#theme_change_button");
+
+          if (!changeThemeButton) return;
+
+          changeThemeButton.addEventListener("click", () => {
+            currentTheme = currentTheme === "dark" ? "light" : "dark";
+            changePageTheme(currentTheme);
+          });
+
+          function setTheme(theme) {
+            localStorage.setItem("theme", theme);
+          }
+
+          function changePageTheme(theme) {
+            setTheme(theme);
+            const html = document.querySelector("html");
+
+            if (theme === "dark") {
+              html.classList.add("dark");
+            } else {
+              html.classList.remove("dark");
+            }
+
+            const button = document.querySelector("#theme_change_button");
+            if (button) {
+              const span = button.querySelector("span");
+              if (span) {
+                span.textContent = theme === "light" ? "dark" : "light";
+              }
+            }
+          }
+        });
+      </script>
+
+      <th:block th:replace="${script}"></th:block>
+    </body>
+  </html>

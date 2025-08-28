@@ -1,0 +1,14 @@
+/* ./src/main/resources/static/input.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom theme styles */
+html.light {
+  background-color: white;
+  /* Optionally, set default text color for light theme */
+  /* color: black; */
+}
+
+/* Tailwind handles dark theme via its 'dark:' variants based on the 'dark' class on html */

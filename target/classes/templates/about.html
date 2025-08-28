@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title id="title">About | Smart Contact Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fade-in {
+        animation: fade-in 0.6s ease-out both;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="content" class="w-full max-w-4xl mx-auto px-8 py-12">
+      <!-- About Section -->
+      <section
+        class="bg-white dark:bg-white/10 backdrop-blur-lg shadow-2xl rounded-3xl p-10 mb-12 transition-colors duration-500 animate-fade-in"
+      >
+        <h1 class="text-3xl md:text-4xl font-bold text-indigo-800 dark:text-indigo-100 mb-4">
+          About Smart Contact Manager
+        </h1>
+        <p class="text-gray-800 dark:text-gray-200 text-lg leading-relaxed mb-6">
+          Smart Contact Manager is your personal contact assistant built to help
+          you securely manage, access, and back up your contacts in the cloud.
+        </p>
+
+        <div class="space-y-4">
+          <div class="flex items-start">
+            <div class="bg-indigo-600 text-white rounded-full p-3 mr-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Seamless Access</h3>
+              <p class="text-gray-700 dark:text-gray-300">Access your contacts from anywhere</p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="bg-blue-600 text-white rounded-full p-3 mr-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Built with Privacy in Mind</h3>
+              <p class="text-gray-700 dark:text-gray-300">Contacts are encrypted and stored securely</p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="bg-fuchsia-600 text-white rounded-full p-3 mr-4">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 8h10M7 12h4m1 8a9 9 0 110-18 9 9 0 010 18z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Easy to Use</h3>
+              <p class="text-gray-700 dark:text-gray-300">Designed for simplicity.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Developer Note Section -->
+      <section
+        class="bg-gradient-to-br from-indigo-100 via-white to-fuchsia-100 dark:from-indigo-900 dark:via-purple-900 dark:to-fuchsia-900 rounded-3xl p-8 shadow-lg transition-colors duration-500 animate-fade-in"
+      >
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Behind the Project</h2>
+        <p class="text-gray-800 dark:text-indigo-100 text-base leading-relaxed mb-4">
+          Smart Contact Manager is built as a Java-based project to demonstrate full-stack capabilities with a focus on real-world use cases. It uses modern web technologies, a robust backend, and cloud support to offer a seamless experience.
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 text-sm">
+          Whether you're building it as a portfolio project or deploying it for actual use, it showcases the power of thoughtful design and secure cloud integration.
+        </p>
+      </section>
+    </div>
+
+    <div id="script"></div>
+  </body>
+</html>

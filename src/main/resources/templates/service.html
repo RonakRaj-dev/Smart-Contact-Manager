@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::parent(~{::#content},~{::title},~{::script})}">
+<head>
+  <title>Services | Smart Contact Manager</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 min-h-screen">
+  <section id="content" class="max-w-4xl mx-auto px-8 py-16">
+    <!-- Page Header -->
+    <div class="mb-12">
+      <h1 class="text-4xl font-extrabold text-indigo-200 mb-3 flex items-center gap-3">
+        <span>✨</span>Our Services
+      </h1>
+      <p class="text-lg text-gray-200">
+        Discover how Smart Contact Manager empowers you to organize, protect, and connect your contacts—wherever life takes you.
+      </p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+      <!-- Service Card 1 -->
+      <div class="bg-white/10 rounded-2xl p-8 shadow flex flex-col items-start hover:scale-105 transition cursor-pointer">
+        <div class="bg-blue-500 rounded-full p-3 text-white mb-3 text-2xl">
+          <span>☁️</span>
+        </div>
+        <h2 class="text-2xl font-bold text-blue-200 mb-2">Cloud Storage</h2>
+        <p class="text-white mb-3">
+          Safely store and access your contacts in the cloud from any device. Never lose your connections!
+        </p>
+      </div>
+      <!-- Service Card 2 -->
+      <div class="bg-white/10 rounded-2xl p-8 shadow flex flex-col items-start hover:scale-105 transition cursor-pointer">
+        <div class="bg-indigo-500 rounded-full p-3 text-white mb-3 text-2xl">
+          <span>🔒</span>
+        </div>
+        <h2 class="text-2xl font-bold text-indigo-200 mb-2">Privacy & Security</h2>
+        <p class="text-white mb-3">
+          Your data stays yours. All contacts are protected with strong encryption and privacy controls.
+        </p>
+      </div>
+      <!-- Service Card 3 -->
+      <div class="bg-white/10 rounded-2xl p-8 shadow flex flex-col items-start hover:scale-105 transition cursor-pointer">
+        <div class="bg-pink-500 rounded-full p-3 text-white mb-3 text-2xl">
+          <span>🔗</span>
+        </div>
+        <h2 class="text-2xl font-bold text-pink-200 mb-2">Seamless Sync</h2>
+        <p class="text-white mb-3">
+          Easily sync contacts across phones and devices. Switch phones hassle-free—your contacts go with you.
+        </p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-16">
+      <div class="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl py-6 px-8 flex flex-col md:flex-row items-center justify-between shadow-lg">
+        <div>
+          <h3 class="text-white text-2xl font-bold mb-2">Ready to get started?</h3>
+          <p class="text-indigo-100">
+            Explore all features and sign up. Experience modern contact management!
+          </p>
+        </div>
+        <a th:href="@{/register}" class="bg-white text-indigo-700 font-bold px-8 py-3 rounded-full shadow hover:bg-indigo-200 transition mt-4 md:mt-0">
+          Try for Free
+        </a>
+      </div>
+    </div>
+  </section>
+  <script>
+    console.log("Hello! Service")
+  </script>
+</body>
+</html>

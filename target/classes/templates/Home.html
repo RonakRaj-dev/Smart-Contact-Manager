@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+  <head>
+    <title>Smart Contact Management - Home</title> 
+    <style>
+      /* Advanced animations and effects */
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      @keyframes fadeInScale {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        33% {
+          transform: translateY(-30px) rotate(120deg);
+        }
+        66% {
+          transform: translateY(-15px) rotate(240deg);
+        }
+      }
+      
+      @keyframes pulse-glow {
+        0%, 100% {
+          box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 40px rgba(102, 126, 234, 0.6);
+        }
+      }
+      
+      @keyframes morphing {
+        0%, 100% {
+          border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+        50% {
+          border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        }
+      }
+      
+      @keyframes text-shimmer {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      
+      @keyframes particle-float {
+        0% {
+          transform: translateY(0px) translateX(0px);
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100px) translateX(50px);
+          opacity: 0;
+        }
+      }
+      
+      .animate-slide-up {
+        animation: slideUp 0.8s ease-out;
+      }
+      
+      .animate-fade-in-scale {
+        animation: fadeInScale 1s ease-out;
+      }
+      
+      .animate-float {
+        animation: float 8s ease-in-out infinite;
+      }
+      
+      .animate-float-delay-2 {
+        animation: float 8s ease-in-out infinite;
+        animation-delay: 2s;
+      }
+      
+      .animate-float-delay-4 {
+        animation: float 8s ease-in-out infinite;
+        animation-delay: 4s;
+      }
+      
+      .animate-pulse-glow {
+        animation: pulse-glow 3s ease-in-out infinite;
+      }
+      
+      .animate-morphing {
+        animation: morphing 8s ease-in-out infinite;
+      }
+      
+      .text-shimmer {
+        background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c, #667eea);
+        background-size: 400% 400%;
+        animation: text-shimmer 4s ease-in-out infinite;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .glass-morphism {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      
+      .gradient-border {
+        position: relative;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        border-radius: 20px;
+        padding: 2px;
+      }
+      
+      .gradient-border::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        padding: 2px;
+        background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+        border-radius: inherit;
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+      }
+      
+      .hover-3d {
+        transform-style: preserve-3d;
+        transition: all 0.3s ease;
+      }
+      
+      .hover-3d:hover {
+        transform: translateY(-10px) rotateX(10deg) rotateY(5deg);
+      }
+      
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        border-radius: 50%;
+        animation: particle-float 3s ease-in-out infinite;
+      }
+      
+      .magnetic-button {
+        position: relative;
+        transition: all 0.3s ease;
+      }
+      
+      .magnetic-button:hover {
+        transform: scale(1.05);
+      }
+      
+      .magnetic-button::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+        border-radius: inherit;
+        z-index: -1;
+        filter: blur(20px);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      
+      .magnetic-button:hover::before {
+        opacity: 0.7;
+      }
+      
+      .typing-effect {
+        overflow: hidden;
+        border-right: 2px solid #667eea;
+        animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+      }
+      
+      @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
+      }
+      
+      @keyframes blink-caret {
+        from, to { border-color: transparent; }
+        50% { border-color: #667eea; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content">
+      <!-- Enhanced Background with Particles -->
+      <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <!-- Morphing Background Shapes -->
+        <div class="absolute top-1/4 left-1/10 w-32 h-32 bg-gradient-to-br from-purple-400 to-pink-400 opacity-20 animate-morphing animate-float"></div>
+        <div class="absolute top-3/5 right-1/10 w-40 h-40 bg-gradient-to-br from-blue-400 to-indigo-500 opacity-20 animate-morphing animate-float-delay-2"></div>
+        <div class="absolute bottom-1/4 left-1/5 w-24 h-24 bg-gradient-to-br from-pink-400 to-red-400 opacity-20 animate-morphing animate-float-delay-4"></div>
+        
+        <!-- Floating Particles -->
+        <div class="particle" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="top: 40%; left: 80%; animation-delay: 1s;"></div>
+        <div class="particle" style="top: 60%; left: 30%; animation-delay: 2s;"></div>
+        <div class="particle" style="top: 80%; left: 70%; animation-delay: 3s;"></div>
+        <div class="particle" style="top: 30%; left: 50%; animation-delay: 4s;"></div>
+      </div>
+      
+      <!-- Main Content with Enhanced Gradient -->
+      <div class="min-h-screen flex items-center justify-center p-5 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 relative">
+        <!-- Glass Morphism Container -->
+        <div class="glass-morphism rounded-3xl p-8 md:p-16 shadow-2xl max-w-5xl w-full mx-4 animate-fade-in-scale relative overflow-hidden">
+          
+          <!-- Glowing Border Effect -->
+          <div class="absolute inset-0 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 rounded-3xl opacity-20 animate-pulse-glow"></div>
+          
+          <!-- Content Container -->
+          <div class="relative z-10">
+            <!-- Hero Section -->
+            <div class="text-center mb-12">
+              <!-- Animated Icon with Glow -->
+              <div class="relative inline-block mb-8">
+                <div class="text-7xl animate-pulse-spin">📱</div>
+                <!-- <div class="absolute inset-0 text-3xl left-20 animate-ping opacity-100 ">✨</div> -->
+              </div>
+              
+              <!-- Animated Title -->
+              <h1 class="text-5xl md:text-7xl font-black text-shimmer mb-6 leading-tight">
+                Smart Contact
+                <br>
+                <span class="text-4xl md:text-6xl">Management</span>
+              </h1>
+              
+              <!-- Typing Effect Subtitle -->
+              <div class="text-xl md:text-2x text-black dark:text-white mb-8 h-16 flex items-center justify-center">
+                <p class="typing-effect whitespace-nowrap">
+                  Experience the future of contact management...
+                </p>
+              </div>
+            </div>
+            
+            <!-- Enhanced Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              <!-- Feature 1 with 3D Effect -->
+              <div class="glass-morphism p-8 rounded-2xl hover-3d transition-all duration-500 group relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                <div class="relative z-10">
+                  <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🔍</div>
+                  <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-blue-300 transition-colors">Smart Search</h3>
+                  <p class="text-gray-300 leading-relaxed group-hover:text-white transition-colors">
+                    AI-powered search that understands context and finds exactly what you need
+                  </p>
+                </div>
+              </div>
+              
+              <!-- Feature 2 with Enhanced Hover -->
+              <div class="glass-morphism p-8 rounded-2xl hover-3d transition-all duration-500 group relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-500 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                <div class="relative z-10">
+                  <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">☁️</div>
+                  <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-purple-300 transition-colors">Cloud Sync</h3>
+                  <p class="text-gray-300 leading-relaxed group-hover:text-white transition-colors">
+                    Real-time synchronization across all devices with 99.9% uptime guarantee
+                  </p>
+                </div>
+              </div>
+              
+              <!-- Feature 3 with Glow Effect -->
+              <div class="glass-morphism p-8 rounded-2xl hover-3d transition-all duration-500 group relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-pink-400 to-red-500 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                <div class="relative z-10">
+                  <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🛡️</div>
+                  <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-pink-300 transition-colors">Ultra Secure</h3>
+                  <p class="text-gray-300 leading-relaxed group-hover:text-white transition-colors">
+                    Military-grade encryption with biometric authentication and zero-knowledge architecture
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Enhanced CTA Section -->
+            <div class="text-center space-y-6">
+              <!-- Main CTA Button -->
+              <button 
+                class="magnetic-button bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white px-12 py-5 rounded-full text-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-2xl relative overflow-hidden group"
+                th:onclick="'window.location.href=\'/signup\''"
+              >
+                <span class="relative z-10">🚀 Launch Your Journey</span>
+                <div class="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </button>
+              
+              <!-- Secondary CTA -->
+              <div>
+                <button 
+                  class="glass-morphism text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-white hover:bg-opacity-20 transition-all duration-300"
+                  th:onclick="'window.location.href=\'/demo\''"
+                >
+                  🎯 See Live Demo
+                </button>
+              </div>
+            </div>
+            
+            <!-- Enhanced Footer Section -->
+            <div class="mt-16 text-center">
+              <p class="text-gray-300 text-lg mb-6">
+                Already managing contacts? 
+                <a th:href="@{/login}" class="text-pink-400 hover:text-pink-300 font-bold transition-colors duration-200 hover:underline">
+                  ⚡ Sign in instantly
+                </a>
+              </p>
+              
+              <!-- Trust Indicators with Icons -->
+              <div class="flex flex-wrap justify-center gap-8 text-gray-400 text-sm">
+                <div class="flex items-center space-x-2">
+                  <span class="text-green-400">✅</span>
+                  <span>Free forever plan</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class="text-blue-400">💳</span>
+                  <span>No credit card needed</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class="text-purple-400">🎁</span>
+                  <span>30-day premium trial</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class="text-pink-400">🔒</span>
+                  <span>Enterprise security</span>
+                </div>
+              </div>
+              
+              <!-- Social Proof -->
+              <div class="mt-8 text-center">
+                <p class="text-gray-400 text-sm mb-2">Trusted by 50,000+ professionals worldwide</p>
+                <div class="flex justify-center items-center space-x-4">
+                  <div class="flex -space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full border-2 border-white"></div>
+                    <div class="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full border-2 border-white"></div>
+                    <div class="w-8 h-8 bg-gradient-to-r from-pink-400 to-red-500 rounded-full border-2 border-white"></div>
+                    <div class="w-8 h-8 bg-gradient-to-r from-indigo-400 to-blue-500 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold">+</div>
+                  </div>
+                  <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                  <span class="text-gray-400 text-sm">4.9/5 rating</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      console.log("🚀 Welcome to the future of contact management!");
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        // Enhanced entrance animations
+        const elements = document.querySelectorAll('.hover-3d');
+        elements.forEach((element, index) => {
+          element.style.animationDelay = `${index * 0.2}s`;
+          element.classList.add('animate-slide-up');
+        });
+        
+        // Magnetic button effect
+        const magneticButtons = document.querySelectorAll('.magnetic-button');
+        magneticButtons.forEach(button => {
+          button.addEventListener('mousemove', function(e) {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            button.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.05)`;
+          });
+          
+          button.addEventListener('mouseleave', function() {
+            button.style.transform = 'translate(0, 0) scale(1)';
+          });
+        });
+        
+        // Typing effect
+        const typingElement = document.querySelector('.typing-effect');
+        const texts = [
+          'Experience the future of contact management...',
+          'Organize, connect, and grow your network...',
+          'Smart AI-powered contact intelligence...',
+          'Your contacts, supercharged and secure...'
+        ];
+        
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function typeEffect() {
+          const currentText = texts[textIndex];
+          
+          if (isDeleting) {
+            typingElement.textContent = currentText.substring(0, charIndex - 1);
+            charIndex--;
+          } else {
+            typingElement.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+          }
+          
+          if (!isDeleting && charIndex === currentText.length) {
+            setTimeout(() => isDeleting = true, 2000);
+          } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+          }
+          
+          const speed = isDeleting ? 50 : 100;
+          setTimeout(typeEffect, speed);
+        }
+        
+        // Start typing effect after initial animation
+        setTimeout(typeEffect, 2000);
+        
+        // Add random particle generation
+        function createParticle() {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          particle.style.left = Math.random() * 100 + '%';
+          particle.style.top = Math.random() * 100 + '%';
+          particle.style.animationDelay = Math.random() * 2 + 's';
+          document.querySelector('.fixed.inset-0').appendChild(particle);
+          
+          setTimeout(() => {
+            particle.remove();
+          }, 3000);
+        }
+        
+        // Create particles periodically
+        setInterval(createParticle, 2000);
+      });
+    </script>
+  </body>
+</html>

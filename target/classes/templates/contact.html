@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+<head>
+  <title>Contact Us | Smart Contact Manager</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 min-h-screen">
+  <div id="content" class="max-w-3xl mx-auto px-8 py-12">
+
+    <!-- Hero Title -->
+    <div class="mb-10">
+      <h1 class="text-4xl font-extrabold text-indigo-300 mb-2 flex items-center gap-3">
+        <span>📞</span>Contact Us
+      </h1>
+      <p class="text-lg text-gray-200">We're here to help you manage your contacts better!</p>
+    </div>
+
+    <!-- Contact Methods Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+      <div class="bg-white/10 rounded-xl p-7 flex items-center gap-4 shadow">
+        <div class="bg-blue-500 rounded-full p-3 text-white text-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 2a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2V4a2 2 0 012-2h8zM7 10a2 2 0 00-2 2v8a2 2 0 002 2h10a2 2 0 002-2v-8a2 2 0 00-2-2H7z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-blue-200 font-semibold">Email</p>
+          <p class="text-white">support@smartcontactmanager.com</p>
+        </div>
+      </div>
+      <div class="bg-white/10 rounded-xl p-7 flex items-center gap-4 shadow">
+        <div class="bg-green-500 rounded-full p-3 text-white text-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-green-200 font-semibold">Phone</p>
+          <p class="text-white">+91 90000 12345</p>
+          <span class="text-xs text-green-100">Mon-Fri, 10am-6pm IST</span>
+        </div>
+      </div>
+      <div class="bg-white/10 rounded-xl p-7 flex items-center gap-4 shadow">
+        <div class="bg-pink-500 rounded-full p-3 text-white text-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 21V5a2 2 0 00-2-2H9a2 2 0 00-2 2v16l5-1.5 5 1.5z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-pink-200 font-semibold">Address</p>
+          <p class="text-white">101, Tech Park, Bengaluru, India</p>
+        </div>
+      </div>
+      <div class="bg-white/10 rounded-xl p-7 flex items-center gap-4 shadow">
+        <div class="bg-yellow-500 rounded-full p-3 text-white text-lg">
+          <span>💬</span>
+        </div>
+        <div>
+          <p class="text-yellow-200 font-semibold">Social</p>
+          <p class="text-white">Twitter: @smartcontacts<br>Facebook: /smartcontactmanager</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="bg-white/5 rounded-2xl p-8 shadow mb-8">
+      <h2 class="text-2xl font-bold text-indigo-200 mb-4">Send Us a Message</h2>
+      <form th:action="@{/contact}" method="post" class="space-y-5">
+        <div>
+          <label class="block text-indigo-100 mb-1">Your Name</label>
+          <input type="text" name="name" required class="w-full px-4 py-2 rounded-md bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        </div>
+        <div>
+          <label class="block text-indigo-100 mb-1">Your Email</label>
+          <input type="email" name="email" required class="w-full px-4 py-2 rounded-md bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        </div>
+        <div>
+          <label class="block text-indigo-100 mb-1">Message</label>
+          <textarea name="message" rows="4" required class="w-full px-4 py-2 rounded-md bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+        </div>
+        <button type="submit" class="bg-indigo-500 text-white px-8 py-2 rounded-full font-bold shadow hover:bg-indigo-600 transition">Send Message</button>
+      </form>
+    </div>
+
+    <!-- Extra Info -->
+    <div class="mt-6 text-gray-400 text-sm">
+      <p>We typically reply within 24 hours. Your data is protected by our privacy commitment.</p>
+    </div>
+
+  </div>
+  <script>
+    console.log("Hello contacts!");
+  </script>
+</body>
+</html>
